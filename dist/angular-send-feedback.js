@@ -13,7 +13,7 @@ angular.module("angularsendfeedback.html", []).run(["$templateCache", function($
 
 angular.module('angular-send-feedback', ['templates-angularsendfeedback']);
 
-angular.module('angular-send-feedback').directive('angularFeedback', [ function() {
+angular.module('angular-send-feedback').directive('angularFeedback', [ '$http', function( $http ) {
         
 
     return {
