@@ -523,18 +523,17 @@ angular.module('angular-send-feedback').directive('angularFeedback', [ function(
                                         post.img = img;
                                         post.note = $('#feedback-note').val();
                                         var data = {feedback: JSON.stringify(post)};
-                                        $.ajax({
+                                        $http({
                                             url: settings.ajaxURL,
                                             dataType: 'json',
-                                            type: 'POST',
-                                            data: data,
-                                            success: function() {
-                                                $('#feedback-module').append(settings.tpl.submitSuccess);
-                                            },
-                                            error: function(){
-                                                $('#feedback-module').append(settings.tpl.submitError);
-                                            }
-                                        });
+                                            method: 'POST',
+                                            data: data })
+                                        .success( function() {
+                                            $('#feedback-module').append(settings.tpl.submitSuccess);
+                                        })
+                                        .error( function(){
+                                            $('#feedback-module').append(settings.tpl.submitError);
+                                        })
                                     }
                                     else {
                                         $('#feedback-overview-error').show();
